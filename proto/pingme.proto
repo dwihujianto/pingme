@@ -1,0 +1,13 @@
+syntax = "proto3";
+option go_package = "rpc/;rpc";
+
+package rpc;
+
+service PingMe {
+  rpc Ping (PingArg) returns (PingArg);
+}
+
+message PingArg {
+  string service = 1;
+  bool current_status = 2;
+}

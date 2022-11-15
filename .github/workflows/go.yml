@@ -15,6 +15,15 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v3
-
+    
+    - name: Setup Module
+      run: go mod download
+      
+    - name: Generate GRPC
+      run: protoc --go_out=. --go-grpc_out=. -I proto proto/*proto
+      
+    - name: Cleanup Module
+      run: go mod tidy
+      
     - name: Build
       run: go build pingme.go

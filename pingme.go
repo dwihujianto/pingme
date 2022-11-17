@@ -14,7 +14,7 @@ func main() {
 		c <- app.StartGrpc("localhost", 12345)
 	}(ch)
 
-	log.Println("Listen")
+	log.Println("Listen bro")
 
 	for a := range ch {
 		log.Println(a)

@@ -17,6 +17,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - uses: dorny/paths-filter@v2
+      id: changes
+      with:
+        filters: |
+          app:
+            - 'app/**'
+    
     - name: Setup Module
       run: go mod download
       
@@ -27,7 +34,7 @@ jobs:
       run: go mod tidy
     
     - name: Folder /app changes
-      if: contains(steps.verify-changed-files.outputs.changed_files, 'app')
+      if: steps.changes.outputs.app == 'true'
       run: echo "app changes"
       
     - name: Build

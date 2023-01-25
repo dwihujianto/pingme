@@ -23,6 +23,8 @@ jobs:
         filters: |
           app:
             - 'app/**'
+          rpc:
+            - 'rpc/**'
     
     - name: Setup Module
       run: go mod download
@@ -36,6 +38,10 @@ jobs:
     - name: Folder /app changes
       if: steps.changes.outputs.app == 'true'
       run: echo "app changes"
+      
+    - name: Folder /rpc changes
+      if: steps.changes.outputs.rpc == 'true'
+      run: echo "rpc changes"
       
     - name: Build
       run: go build pingme.go

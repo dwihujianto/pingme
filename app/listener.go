@@ -18,6 +18,7 @@ func (svc) PingMe(c context.Context, p *rpc.PingArg) (*rpc.PingArg, error) {
 	return p, nil
 }
 
+// edit
 func StartGrpc(addr string, port int) error {
 	addr = fmt.Sprintf(":%d", port)
 	listen, err := net.Listen("tcp4", addr)
